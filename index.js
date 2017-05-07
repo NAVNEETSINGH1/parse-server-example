@@ -64,24 +64,9 @@ httpServer.listen(port, function() {
 var query = new Parse.Query(Parse.Installation);
 query.equalTo('channels', 'test-channel');
 
-Parse.Push.send(
-  {
-    where: query,
-    data: 
-    {
-      alert: 'Test',
-      badge: 1,
-      sound: 'default'
-    }
-  }, 
-  {
-    success: function() {
-      console.log('##### PUSH OK');
-    },
-    error: function(error) {
-      console.log('##### PUSH ERROR');
-    }
-  },
-  { useMasterKey: true });
+Parse.Push.send({
+	channels: [channel],
+	data: data
+}, { useMasterKey: true });
 // This will enable the Live Query real-time server
 ParseServer.createLiveQueryServer(httpServer);
