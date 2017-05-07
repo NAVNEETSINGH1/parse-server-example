@@ -61,6 +61,27 @@ var httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
     console.log('parse-server-example running on port ' + port + '.');
 });
+var query = new Parse.Query(Parse.Installation);
+query.equalTo('channels', 'test-channel');
 
+Parse.Push.send(
+  {
+    where: query,
+    data: 
+    {
+      alert: 'Test',
+      badge: 1,
+      sound: 'default'
+    }
+  }, 
+  {
+    success: function() {
+      console.log('##### PUSH OK');
+    },
+    error: function(error) {
+      console.log('##### PUSH ERROR');
+    }
+  },
+  { useMasterKey: true });
 // This will enable the Live Query real-time server
 ParseServer.createLiveQueryServer(httpServer);
