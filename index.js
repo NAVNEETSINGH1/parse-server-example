@@ -26,7 +26,7 @@ var api = new ParseServer({
 			apiKey: '' // The Server API Key of GCM
 		},
 		ios: {
-			pfx: 'certs/mycert.p12', // the path and filename to the .p12 file you exported earlier. 
+			pfx: 'certs/DrawTogether_APNS_Dev.p12', // the path and filename to the .p12 file you exported earlier. 
 			cert: '', // If not using the .p12 format, the path to the certificate PEM to load from disk
 			bundleId: '', // The bundle identifier associated with your app
 			key: '', // If not using the .p12 format, the path to the private key PEM to load from disk
