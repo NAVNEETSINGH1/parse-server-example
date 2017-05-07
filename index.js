@@ -19,7 +19,7 @@ var api = new ParseServer({
   push: {
 		
 		ios: {
-			pfx: 'certs/DrawTogether_APNS_Dev.p12', // the path and filename to the .p12 file you exported earlier. 
+			pfx: '', // the path and filename to the .p12 file you exported earlier. 
 			cert: 'certs/DrawTogether_APNS_Dev.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
 			bundleId: 'com.drawtogether', // The bundle identifier associated with your app
 			key: 'asdf1234', // If not using the .p12 format, the path to the private key PEM to load from disk
