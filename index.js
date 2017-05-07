@@ -11,28 +11,26 @@ if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
-
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'myAppId',
-  masterKey: process.env.MASTER_KEY || 'myMasterKey', //Add your master key here. Keep it secret!
+  
+  push: {
+		
+		ios: {
+			pfx: 'certs/DrawTogether_APNS_Dev.p12', // the path and filename to the .p12 file you exported earlier. 
+			cert: 'certs/DrawTogether_APNS_Dev.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
+			bundleId: 'com.drawtogether', // The bundle identifier associated with your app
+			key: 'asdf1234', // If not using the .p12 format, the path to the private key PEM to load from disk
+			production: false // Specifies which environment to connect to: Production (if true) or 
+		}
+	},
+  masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-  },push: {
-		android: {
-			senderId: '', // The Sender ID of GCM
-			apiKey: '' // The Server API Key of GCM
-		},
-		ios: {
-			pfx: 'certs/DrawTogether_APNS_Dev.p12', // the path and filename to the .p12 file you exported earlier. 
-			cert: '', // If not using the .p12 format, the path to the certificate PEM to load from disk
-			bundleId:'com.drawtogether', // The bundle identifier associated with your app
-			key:'asdf1234', // If not using the .p12 format, the path to the private key PEM to load from disk
-			production: true // Specifies which environment to connect to: Production (if true) or Sandbox
-		}
-	}
+  }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
