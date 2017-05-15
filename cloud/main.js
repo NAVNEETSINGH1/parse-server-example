@@ -4,37 +4,30 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 
+Parse.Cloud.define("iosPushTest", function(request, response) {
 
-Parse.Cloud.define("push", function(request, response){
-    var message = request.params.message;
-    //Pushes work with Installation table
-    //So, you need to select to whom you want to push
-    var installationQuery = new Parse.Query(Parse.Installation);
+  // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
+  var params = request.params;
+  var user = request.user;
 
-    //You should set expiration time when push will be expired
-    //This is optional
-    var expDate = new Date();
-    expDate.setDate(expDate.getDate() + 1); //The notification will expire in 1 day
+  // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
+  var messageText = params.text;
 
-    //Setting up push data
-    var data = {"badge": "Increment", "sound": "default"};
-    data['alert'] = message;
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
 
-    //Sending push
-    Parse.Push.send({
-        where: installationQuery,
-        data: data,
-        expiration_time: expDate
-    },{
-        success: function () {
-            response.success("Pushed successfully");
-        },
-        error: function (error) {
-            response.error(error);
-        },
-        useMasterKey: true
-    });
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query                                                                                                                                                              
+    data: {
+      alert: "Message: " + messageText
+    }
+  }, { success: function() {
+      console.log("#### PUSH OK");
+  }, error: function(error) {
+      console.log("#### PUSH ERROR" + error.message);
+  }, useMasterKey: true});
+
+  response.success('success');
 });
-
 
 
