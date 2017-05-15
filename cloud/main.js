@@ -4,7 +4,7 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 
-Parse.Cloud.define("iosPushTest", function(request, response) {
+Parse.Cloud.define("push", function(request, response) {
 
   // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
   var params = request.params;
