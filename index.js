@@ -15,17 +15,16 @@ var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'myAppId',
-  
-  push: {
-		
-		ios: {
-			pfx: 'certs/DrawTogether_APNS_Dev.p12', // the path and filename to the .p12 file you exported earlier. 
-			cert: '', //certs/DrawTogether_APNS_Dev.pem   If not using the .p12 format, the path to the certificate PEM to load from disk
-			bundleId: 'com.drawtogether', // The bundle identifier associated with your app
-			key: '', //asdf1234 If not using the .p12 format, the path to the private key PEM to load from disk
-			production: false // Specifies which environment to connect to: Production (if true) or 
-		}
-	},
+   push:{
+    ios: [
+      {
+             pfx: 'DrawTogether_APNS_Dev.p12', 
+             bundleId: 'com.drawtogether', 
+             production: false
+          } 
+    ]
+  },
+ 
   masterKey: process.env.MASTER_KEY || 'myMasterKey', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'https://parseexampleapp.herokuapp.com/parse',  // Don't forget to change to https if needed
   liveQuery: {
