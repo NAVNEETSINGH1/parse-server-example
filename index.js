@@ -18,7 +18,7 @@ var api = new ParseServer({
    push:{
     ios: [
       {
-             pfx: 'DrawTogether_APNS_Dev.p12', 
+             pfx: 'DrawTogether_APNS_Dev_Unprotect.p12', 
              bundleId: 'com.drawtogether', 
              production: false
           } 
