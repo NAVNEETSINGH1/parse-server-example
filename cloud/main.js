@@ -7,7 +7,7 @@ Parse.Cloud.define('hello', function(req, res) {
 Parse.Cloud.define("push", function(request, response){
   console.log('entered cloud push :  - '+JSON.stringify(request));  
   var message = request.params.message;
- 
+ message="working?";
   var query = new Parse.Query(Parse.User);
 query.equalTo('username', request.user.username);
 // Find devices associated with these users
