@@ -5,7 +5,8 @@ Parse.Cloud.define('hello', function(req, res) {
 
 
 Parse.Cloud.define("push", function(request, response){
-    var message = request.params.message;
+  console.log('entered cloud push :  - '+request);  
+  var message = request.params.message;
     //Pushes work with Installation table
     //So, you need to select to whom you want to push
     var installationQuery = new Parse.Query(Parse.Installation);
@@ -19,14 +20,16 @@ Parse.Cloud.define("push", function(request, response){
     var data = {"badge": "Increment", "sound": "default"};
     data['alert'] = message;
 
-    //Sending push
-    Parse.Push.send({
+    Sending console.log('sending cloud push : - '+'installationQuery : '+installationQuery +' data ':+data+' expiration_time '+expDate); 
+     Parse.Push.send({
         where: installationQuery,
         data: data,
         expiration_time: expDate
     },{
         success: function () {
-            response.success("Pushed successfully");
+          cosole.log('push funcation callback :'+response')
+           
+                     response.success("Pushed successfully");
         },
         error: function (error) {
             response.error(error);
