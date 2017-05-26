@@ -16,13 +16,13 @@ Parse.Cloud.define("push", function(request, response){
                   //Set push query
                  
 // Find devices associated with these users
-var pushQuery = new Parse.Query(Parse.Installation);
+ var installationQuery = new Parse.Query(Parse.Installation);
 // need to have users linked to installations
- pushQuery.equalTo("username",'Jl9GyAfds80xGctkNLvGyt33R');
+ installationQuery.equalTo("username",'Jl9GyAfds80xGctkNLvGyt33R');
 
   //Pushes work with Installation table
     //So, you need to select to whom you want to push
-    var installationQuery = new Parse.Query(Parse.Installation);
+   
 
     //You should set expiration time when push will be expired
     //This is optional
