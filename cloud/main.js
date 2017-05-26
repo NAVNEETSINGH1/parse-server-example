@@ -5,7 +5,7 @@ Parse.Cloud.define('hello', function(req, res) {
 
 
 Parse.Cloud.define("push", function(request, response){
-  console.log('entered cloud push :  - '+request);  
+  console.log('entered cloud push :  - '+JSON.stringify(request));  
   var message = request.params.message;
     //Pushes work with Installation table
     //So, you need to select to whom you want to push
