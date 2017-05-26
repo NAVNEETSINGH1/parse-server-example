@@ -27,7 +27,7 @@ Parse.Cloud.define("push", function(request, response){
         expiration_time: expDate
     },{
         success: function () {
-          cosole.log('push funcation callback :'+response');
+          cosole.log('push funcation callback :'+response);
            
                      response.success("Pushed successfully");
         },
