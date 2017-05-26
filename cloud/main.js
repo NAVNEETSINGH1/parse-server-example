@@ -27,12 +27,13 @@ Parse.Cloud.define("push", function(request, response){
         expiration_time: expDate
     },{
         success: function () {
-          cosole.log('push funcation callback :'+response);
+          cosole.log('push funcation callback success :'+response);
            
                      response.success("Pushed successfully");
         },
         error: function (error) {
-            response.error(error);
+          console.log('push funcation  error  :  - '+JSON.stringify(error));  
+          response.error(error);
         },
         useMasterKey: true
     });
