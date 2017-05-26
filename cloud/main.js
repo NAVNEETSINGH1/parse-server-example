@@ -15,7 +15,7 @@ Parse.Cloud.define("push", function(request, response){
 
                   //Set push query
    var query = new Parse.Query(Parse.User);
- -query.equalTo('username', 'Jl9GyAfds80xGctkNLvGyt33R');
+ query.equalTo('username', 'Jl9GyAfds80xGctkNLvGyt33R');
  +//  var query = new Parse.Query(Parse.User);
  +//query.equalTo('username', 'Jl9GyAfds80xGctkNLvGyt33R');
  +  
