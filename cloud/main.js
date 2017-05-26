@@ -13,7 +13,7 @@ query.equalTo('username', 'Jl9GyAfds80xGctkNLvGyt33R');
 // Find devices associated with these users
 var pushQuery = new Parse.Query(Parse.Installation);
 // need to have users linked to installations
-pushQuery.matchesQuery('user', 'Jl9GyAfds80xGctkNLvGyt33R');
+pushQuery.matchesQuery('user', query);
 
   //Pushes work with Installation table
     //So, you need to select to whom you want to push
