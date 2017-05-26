@@ -20,7 +20,7 @@ Parse.Cloud.define("push", function(request, response){
     var data = {"badge": "Increment", "sound": "default"};
     data['alert'] = message;
 
-     console.log('sending cloud push : installationQuery : '+installationQuery +' data : '+data+' expiration_time : '+expDate); 
+     console.log('sending cloud push : installationQuery : '+JSON.stringify(installationQuery)+' data : '+JSON.stringify(data)+' expiration_time : '+JSON.stringify(expDate)); 
      Parse.Push.send({
         where: installationQuery,
         data: data,
