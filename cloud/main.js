@@ -9,6 +9,7 @@ Parse.Cloud.define("push", function(request, response){
   var message = request.params.message;
  message="working?";
   var username=request.user.username;
+  username='tyvBhQkJpq2Zzs8pUAEHrV0Qd';
 console.log('username:'+username);
  var query = new Parse.Query(Parse.User);
  query.equalTo('username', username);
@@ -59,7 +60,7 @@ Parse.Cloud.define("sendPush", function(request, response){
   var message = request.params.message;
  message="working?";
   var username=request.user.username;
-
+ username='tyvBhQkJpq2Zzs8pUAEHrV0Qd';
  var query = new Parse.Query(Parse.User);
  query.equalTo('username', username);
   // Find devices associated with these users
