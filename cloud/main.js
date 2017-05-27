@@ -8,16 +8,15 @@ Parse.Cloud.define("push", function(request, response){
   console.log('entered cloud push :  - '+JSON.stringify(request));  
   var message = request.params.message;
  message="working?";
-//  var query = new Parse.Query(Parse.User);
-//query.equalTo('username', 'Jl9GyAfds80xGctkNLvGyt33R');
+  var username=request.user.username;
+
+ var query = new Parse.Query(Parse.User);
+ query.equalTo('username', username);
   
  //  var username = request.object.get("username");
 
                   //Set push query
-   var query = new Parse.Query(Parse.User);
- query.equalTo('username', 'Jl9GyAfds80xGctkNLvGyt33R');
- //query.equalTo('username', 'Jl9GyAfds80xGctkNLvGyt33R');
- //  var username = request.object.get("username");
+  /  var username = request.object.get("username");
                   //Set push query
                  
   // Find devices associated with these users
