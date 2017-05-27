@@ -13,12 +13,12 @@ Parse.Cloud.define("push", function(request, response){
 console.log('username:'+username);
  var query = new Parse.Query(Parse.User);
  query.equalTo('username', username);
-console.log("query :"+query);
+console.log("query :"+JSON.stringify(query));
   // Find devices associated with these users
   var installationQuery = new Parse.Query(Parse.Installation);
   // need to have users linked to installations
  installationQuery.matchesQuery('user', query);               
-console.log("installationQuery :"+installationQuery);
+console.log("installationQuery :"+JSON.stringify(installationQuery));
   // Find devices associated with these users
   //Pushes work with Installation table
     //So, you need to select to whom you want to push
