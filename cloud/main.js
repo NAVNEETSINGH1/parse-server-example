@@ -37,6 +37,7 @@ console.log("installationQuery :"+JSON.stringify(installationQuery));
      Parse.Push.send({
         where: installationQuery,
         data: data,
+        uri: "https://parseexampleapp.herokuapp.com/push",
         expiration_time: expDate
     },{
         success: function () {
