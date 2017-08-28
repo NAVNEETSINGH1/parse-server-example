@@ -35,8 +35,8 @@ console.log("query :"+JSON.stringify(query));
 
      console.log('sending cloud push : installationQuery : '+JSON.stringify(installationQuery) +' data : '+JSON.stringify(data)+' expiration_time : '+JSON.stringify(expDate)); 
      Parse.Push.send({
-        where: installationQuery,
-        data: data,
+        where: JSON.parse(installationQuery),
+        data: JSON.parse(data),
         uri: "https://parseexampleapp.herokuapp.com/parse/push",
         expiration_time: expDate
     }, { useMasterKey: true })
