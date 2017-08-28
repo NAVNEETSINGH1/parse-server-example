@@ -15,10 +15,10 @@ console.log('username:'+username);
  query.equalTo('username', username);
 console.log("query :"+JSON.stringify(query));
   // Find devices associated with these users
-  var installationQuery = new Parse.Query(Parse.Installation);
+ var installationQuery = new Parse.Query(Parse.Installation);
   // need to have users linked to installations
- installationQuery.matchesQuery('user', query);               
-console.log("installationQuery :"+JSON.stringify(installationQuery));
+  installationQuery.equalTo('username', username);
+ //installationQuery.matchesQuery('user', query);
   // Find devices associated with these users
   //Pushes work with Installation table
     //So, you need to select to whom you want to push
