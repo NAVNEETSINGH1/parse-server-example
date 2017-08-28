@@ -79,7 +79,7 @@ Parse.Cloud.define("sendPush", function(request, response){
      Parse.Push.send({
         where: installationQuery,
         data: data,
-         uri: "https://parseexampleapp.herokuapp.com/push",
+         uri: "https://parseexampleapp.herokuapp.com/parse/push",
         expiration_time: expDate
     },{
         success: function () {
