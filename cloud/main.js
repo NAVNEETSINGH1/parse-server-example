@@ -40,9 +40,8 @@ console.log("query :"+JSON.stringify(query));
         uri: "https://parseexampleapp.herokuapp.com/parse/push",
         expiration_time: expDate
     }, { useMasterKey: true })
-     .then(function()function () {
+     .then(function () {
           cosole.log('push funcation callback success :'+response);
-           
                      response.success("Pushed successfully");
         }, function (error) {
           console.log('push funcation  error  :  - '+JSON.stringify(error));  
