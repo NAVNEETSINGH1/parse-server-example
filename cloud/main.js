@@ -32,9 +32,11 @@ console.log("query :"+JSON.stringify(query));
     //Setting up push data
     var data = {"badge": "Increment", "sound": "default"};
     data['alert'] = message;
+     console.log(typeof installationQuery);
+     console.log('sending cloud push : installationQuery : '+JSON.stringify(installationQuery) +' data : '+JSON.stringify(data)+' expiration_time : '+JSON.stringify(expDate)); 
      Parse.Push.send({
-        where: JSON.parse(installationQuery),
-        data: JSON.parse(data),
+        where: installationQuery,
+        data: data,
         uri: "https://parseexampleapp.herokuapp.com/parse/push",
         expiration_time: expDate
     }, { useMasterKey: true })
